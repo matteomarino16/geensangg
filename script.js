@@ -1,112 +1,236 @@
 // ===== Dati progetti =====
-// Per aggiungere un progetto basta aggiungere una riga qui.
-const CDN = "https://cdn.myportfolio.com/8b7347df-6b14-4ca2-82a1-d36a3bbc4a6c/";
-const SITE = "https://geensang.myportfolio.com/";
+// Foto e video stanno in progetti/<cartella>/ (originali), con versioni leggere in thumbs/ e web/.
+// media: elenco in ordine; w/h servono a riservare lo spazio prima che l'immagine carichi.
+const MEDIA = "progetti/";
 
 const projects = [
-  // Photography
-  { title: "Redbull x Adidas in Sneakers 76", year: 2026, type: "photo", slug: "redbull-x-adidas-in-sneakers-76", img: "37854a9c-0523-4d4f-99df-4f2859fbd89e_rwc_0x759x1920x1501x1920.jpg?h=5d03601006adcd46e0c0c5b12809b9fa" },
-  { title: "Silhouette", year: 2026, type: "photo", slug: "silhouette", img: "e7f73ad5-0ca7-4a10-9bdc-32be730c01b7_carw_202x158x5120.jpg?h=28d48b8f526184327bb24287533e0be6" },
-  { title: "Fashion Killa", year: 2026, type: "photo", slug: "fashion-killa", img: "f5fc4f5e-bbbc-4f25-9fb5-51030d4faa1c_carw_202x158x5120.jpg?h=7e5e9de9f24b0cac3879fd5e3e39a10a" },
-  { title: "Aura", year: 2026, type: "photo", slug: "aura", img: "d7eb597f-aa91-48b9-8fce-5430b32cee8d_carw_202x158x5120.png?h=f11f8691b486df07bd33889e4fc5f977" },
-  { title: "Wehea\\Bolla Merch", year: 2025, type: "photo", slug: "weheabolla-merch", img: "734964f7-922e-44c2-b6f2-061f272ae437_carw_202x158x5120.jpg?h=42f9badc61f95f34287359341d578929" },
-  { title: "Nightlife", year: 2025, type: "photo", slug: "nightlife", img: "4671832f-f052-4947-a859-5a7f7cc6c755_carw_202x158x5120.jpg?h=6c6f38ba49a6a6a4a7b4ff772dea3e53" },
-  { title: "Wehea || Bolla || Lookbook", year: 2026, type: "photo", slug: "wehea-bolla-lookbook", img: "ff8077ad-e429-4307-a7a0-9ab61250433a_carw_202x158x5120.jpg?h=f428228b764dfcfef89eacb25470e18a" },
-  { title: "Tattoo\\4", year: 2025, type: "photo", slug: "savage-tattoo", img: "e4c08536-3612-49db-ba3d-4c1e0273f73e_carw_202x158x5120.jpg?h=5e008583eced48a2b90c62f17b638e13" },
-  { title: "DMT x Sound Department", year: 2025, type: "photo", slug: "dmt-x-sound-department", img: "73b46873-a54f-44d4-86a0-b3f001686a29_rwc_572x56x1773x1386x1773.png?h=b8a1aebef58c504be768698ba7caf250" },
-  { title: "El Cohiba", year: 2025, type: "photo", slug: "el-cohiba", img: "b3e460ba-a683-463e-8f61-2f4e2eb452ce_carw_202x158x5120.jpg?h=7f46a4a6d8283d29849d29fd7e86769e" },
-  { title: "OnTheRocks", year: 2024, type: "photo", slug: "ontherocks", img: "816c39d1-b589-48ec-b980-e5da5ed21daa_carw_202x158x5120.jpg?h=e69cb712e24c1e015db06406ce8f8e4d" },
-  { title: "Wehea Lookbook", year: 2025, type: "photo", slug: "wehea-lookbook", img: "614a6181-99bb-464f-a63f-e64f4f841546_carw_202x158x5120.jpg?h=2f5338c4840ff2dce67b8c4ceee7a4b3" },
-  { title: "MRC x Hangar", year: 2025, type: "photo", slug: "mrc-x-hangar", img: "673de333-9278-4c47-aab0-ae00149969d0_carw_202x158x5120.jpg?h=66c6626ab42c1f8a83f1d5b85557bf0c" },
-  { title: "Southern Italian Escape", year: 2024, type: "photo", slug: "southern-italian-escape", img: "bc7da916-6129-454a-9142-dffb2e7af2d2_carw_202x158x5120.jpg?h=d31a3468b02a3c9b55cf95f2ee830540" },
-  { title: "Basketball", year: 2025, type: "photo", slug: "basketball", img: "5355048d-a806-45ca-9011-39a1f38992fa_carw_202x158x5120.jpg?h=cb4c907fd5b7642c0030ba04c81a49c8" },
-  { title: "Mare Frame", year: 2025, type: "photo", slug: "mare-frame", img: "0c7080b6-b085-4356-957d-8916b782f5a5_carw_202x158x5120.jpg?h=dfbb70a82f800e5406dd03b93b694f71" },
-
-  // Video
-  { title: "Bolla\\Wehea Fashion Show", year: 2025, type: "video", slug: "bollawehea-fashion-show", img: "a8135cdd-76eb-4af8-8531-da4224b51c32_rwc_688x190x1500x1172x1500.png?h=542a503f2974b46b01ba1219678649fb" },
-  { title: "WeheaCreativeStudio x Tears4Dinner", year: 2025, type: "video", slug: "weheacreativestudio-x-tears4dinner", img: "df2feb84-eae2-43c1-a20a-802797bb48f8_rwc_770x183x1303x1019x1303.png?h=b3db077eb5b3be8d2a951a4b8e4698c0" },
-  { title: "WCS", year: 2025, type: "video", slug: "wcs", img: "ac3b672f-4717-4ada-82a7-e141c0e6cc84_rwc_669x177x1303x1019x1303.png?h=e3b2c102a5612d9e623f6e3857b9161f" },
-  { title: "Wehea present Mythcore Fashion Show", year: 2025, type: "video", slug: "wehea-present-mythcore-fashion-show", img: "22c9dd94-c81b-42cc-86db-292870bdb384_rwc_748x11x1238x968x1238.png?h=9245d4376b38948c6e2738d348b76c0d" },
-  { title: "MTFK Teaser", year: 2025, type: "video", slug: "mtfk-teaser", img: "b50a916d-3f5d-4b55-8fc9-d5d315c6898d_carw_202x158x5120.jpg?h=96a40808029b7bfdb0854c314faed195" },
-  { title: "Afrobar Vibes", year: 2025, type: "video", slug: "afrobar-vibes", img: "291667ea-0843-4003-b2a4-cd169687884d_rwc_788x302x1303x1019x1303.png?h=005b3a466cd1cfd02c862a11bb634b95" },
-  { title: "Nightlife Footages", year: 2025, type: "video", slug: "gianma-bln-in-catania-sunrise", img: "19b0d53d-9e8f-4b98-a87b-f6136ae2036d_rwc_604x308x1303x1019x1303.png?h=7531652e8e88be1e55327a907dd80059" },
+  { title: "Redbull x Adidas in Sneakers 76", year: 2026, type: "photo", folder: "01-redbull-x-adidas-in-sneakers-76", media: [{ src: "01.jpg", w: 600, h: 900 }, { src: "02.jpg", w: 675, h: 900 }, { src: "03.jpg", w: 600, h: 900 }, { src: "04.jpg", w: 600, h: 900 }, { src: "05.jpg", w: 600, h: 900 }, { src: "06.jpg", w: 600, h: 900 }, { src: "07.jpg", w: 675, h: 900 }, { src: "08.jpg", w: 600, h: 900 }, { src: "09.jpg", w: 600, h: 900 }, { src: "10.jpg", w: 600, h: 900 }, { src: "11.jpg", w: 600, h: 900 }] },
+  { title: "Silhouette", year: 2026, type: "photo", folder: "02-silhouette", media: [{ src: "01.jpg", w: 720, h: 900 }, { src: "02.jpg", w: 600, h: 900 }, { src: "03.jpg", w: 600, h: 900 }, { src: "04.jpg", w: 600, h: 900 }, { src: "05.jpg", w: 613, h: 900 }, { src: "06.jpg", w: 600, h: 900 }] },
+  { title: "Fashion Killa", year: 2026, type: "photo", folder: "03-fashion-killa", media: [{ src: "01.jpg", w: 600, h: 900 }, { src: "02.jpg", w: 720, h: 900 }, { src: "03.jpg", w: 720, h: 900 }, { src: "04.jpg", w: 600, h: 900 }, { src: "05.jpg", w: 720, h: 900 }, { src: "06.jpg", w: 720, h: 900 }, { src: "07.jpg", w: 675, h: 900 }, { src: "08.jpg", w: 720, h: 900 }] },
+  { title: "Aura", year: 2026, type: "photo", folder: "04-aura", media: [{ src: "01.jpg", w: 900, h: 672 }, { src: "02.jpg", w: 900, h: 672 }] },
+  { title: "Wehea\\Bolla Merch", year: 2025, type: "photo", folder: "05-weheabolla-merch", media: [{ src: "01.jpg", w: 720, h: 900 }, { src: "02.jpg", w: 900, h: 600 }, { src: "03.jpg", w: 720, h: 900 }, { src: "04.jpg", w: 900, h: 600 }, { src: "05.jpg", w: 720, h: 900 }, { src: "06.jpg", w: 600, h: 900 }] },
+  { title: "Nightlife", year: 2025, type: "photo", folder: "06-nightlife", media: [{ src: "01.jpg", w: 900, h: 600 }, { src: "02.jpg", w: 600, h: 900 }, { src: "03.jpg", w: 600, h: 900 }, { src: "04.jpg", w: 900, h: 600 }, { src: "05.jpg", w: 600, h: 900 }, { src: "06.jpg", w: 720, h: 900 }, { src: "07.jpg", w: 900, h: 600 }, { src: "08.jpg", w: 600, h: 900 }, { src: "09.jpg", w: 900, h: 600 }] },
+  { title: "Wehea || Bolla || Lookbook", year: 2026, type: "photo", folder: "07-wehea-bolla-lookbook", media: [{ src: "01.jpg", w: 600, h: 900 }, { src: "02.jpg", w: 600, h: 900 }, { src: "03.jpg", w: 600, h: 900 }, { src: "04.jpg", w: 600, h: 900 }, { src: "05.jpg", w: 600, h: 900 }, { src: "06.jpg", w: 600, h: 900 }, { src: "07.jpg", w: 600, h: 900 }, { src: "08.jpg", w: 600, h: 900 }, { src: "09.jpg", w: 600, h: 900 }, { src: "10.jpg", w: 600, h: 900 }] },
+  { title: "Tattoo\\4", year: 2025, type: "photo", folder: "08-savage-tattoo", media: [{ src: "01.jpg", w: 900, h: 660 }, { src: "02.jpg", w: 900, h: 510 }, { src: "03.jpg", w: 900, h: 600 }, { src: "04.jpg", w: 900, h: 797 }] },
+  { title: "DMT x Sound Department", year: 2025, type: "photo", folder: "09-dmt-x-sound-department", media: [{ src: "01.jpg", w: 900, h: 600 }, { src: "02.jpg", w: 600, h: 900 }, { src: "03.jpg", w: 900, h: 600 }, { src: "04.jpg", w: 600, h: 900 }, { src: "05.jpg", w: 900, h: 600 }, { src: "06.jpg", w: 600, h: 900 }] },
+  { title: "El Cohiba", year: 2025, type: "photo", folder: "10-el-cohiba", media: [{ src: "01.jpg", w: 900, h: 600 }, { src: "02.jpg", w: 600, h: 900 }, { src: "03.jpg", w: 900, h: 627 }, { src: "04.jpg", w: 600, h: 900 }] },
+  { title: "OnTheRocks", year: 2024, type: "photo", folder: "11-ontherocks", media: [{ src: "01.jpg", w: 600, h: 900 }, { src: "02.jpg", w: 600, h: 900 }, { src: "03.jpg", w: 600, h: 900 }, { src: "04.jpg", w: 600, h: 900 }, { src: "05.jpg", w: 600, h: 900 }, { src: "06.jpg", w: 600, h: 900 }] },
+  { title: "Wehea Lookbook", year: 2025, type: "photo", folder: "12-wehea-lookbook", media: [{ src: "01.jpg", w: 720, h: 900 }, { src: "02.jpg", w: 720, h: 900 }, { src: "03.jpg", w: 720, h: 900 }, { src: "04.jpg", w: 720, h: 900 }, { src: "05.jpg", w: 720, h: 900 }, { src: "06.jpg", w: 720, h: 900 }] },
+  { title: "MRC x Hangar", year: 2025, type: "photo", folder: "13-mrc-x-hangar", media: [{ src: "01.jpg", w: 724, h: 900 }, { src: "02.jpg", w: 900, h: 600 }, { src: "03.jpg", w: 900, h: 600 }, { src: "04.jpg", w: 600, h: 900 }, { src: "05.jpg", w: 900, h: 600 }, { src: "06.jpg", w: 600, h: 900 }] },
+  { title: "Southern Italian Escape", year: 2024, type: "photo", folder: "14-southern-italian-escape", media: [{ src: "01.jpg", w: 600, h: 900 }, { src: "02.jpg", w: 600, h: 900 }, { src: "03.jpg", w: 600, h: 900 }, { src: "04.jpg", w: 600, h: 900 }, { src: "05.jpg", w: 600, h: 900 }, { src: "06.jpg", w: 600, h: 900 }, { src: "07.jpg", w: 600, h: 900 }] },
+  { title: "Basketball", year: 2025, type: "photo", folder: "15-basketball", media: [{ src: "01.jpg", w: 600, h: 900 }, { src: "02.jpg", w: 600, h: 900 }, { src: "03.jpg", w: 600, h: 900 }] },
+  { title: "Mare Frame", year: 2025, type: "photo", folder: "16-mare-frame", media: [{ src: "01.jpg", w: 900, h: 675 }, { src: "02.jpg", w: 900, h: 630 }] },
+  { title: "Bolla\\Wehea Fashion Show", year: 2025, type: "video", folder: "17-bollawehea-fashion-show", media: [{ src: "video-01-poster.jpg", w: 900, h: 506, video: "video-01.mp4" }, { src: "video-02-poster.jpg", w: 900, h: 506, video: "video-02.mp4" }, { src: "video-03-poster.jpg", w: 900, h: 506, video: "video-03.mp4" }] },
+  { title: "WeheaCreativeStudio x Tears4Dinner", year: 2025, type: "video", folder: "18-weheacreativestudio-x-tears4dinner", media: [{ src: "video-01-poster.jpg", w: 900, h: 508, video: "video-01.mp4" }] },
+  { title: "WCS", year: 2025, type: "video", folder: "19-wcs", media: [{ src: "video-01-poster.jpg", w: 900, h: 658, video: "video-01.mp4" }] },
+  { title: "Wehea present Mythcore Fashion Show", year: 2025, type: "video", folder: "20-wehea-present-mythcore-fashion-show", media: [{ src: "video-01-poster.jpg", w: 900, h: 720, video: "video-01.mp4" }] },
+  { title: "MTFK Teaser", year: 2025, type: "video", folder: "21-mtfk-teaser", media: [{ src: "video-01-poster.jpg", w: 900, h: 720, video: "video-01.mp4" }] },
+  { title: "Afrobar Vibes", year: 2025, type: "video", folder: "22-afrobar-vibes", media: [{ src: "video-01-poster.jpg", w: 900, h: 720, video: "video-01.mp4" }] },
+  { title: "Nightlife Footages", year: 2025, type: "video", folder: "23-gianma-bln-in-catania-sunrise", media: [{ src: "video-01-poster.jpg", w: 900, h: 506, video: "video-01.mp4" }, { src: "video-02-poster.jpg", w: 900, h: 506, video: "video-02.mp4" }] },
 ];
 
-const TYPE_LABEL = { photo: "Photography", video: "Video" };
+const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-// ===== Intro (index.html) =====
+const pad = (n, len = 2) => String(n).padStart(len, "0");
+const lerp = (a, b, t) => a + (b - a) * t;
+
+// Cursore personalizzato: pallino che diventa un cerchio con etichetta su [data-cursor].
+function initCursor() {
+  const cursor = document.querySelector(".cursor");
+  if (!cursor || !finePointer) return;
+  const label = cursor.querySelector(".cursor-label");
+
+  let x = innerWidth / 2, y = innerHeight / 2, cx = x, cy = y;
+
+  window.addEventListener("mousemove", (e) => {
+    x = e.clientX;
+    y = e.clientY;
+    cursor.classList.add("visible");
+  });
+
+  document.addEventListener("mouseleave", () => cursor.classList.remove("visible"));
+
+  document.addEventListener("mouseover", (e) => {
+    const target = e.target.closest("[data-cursor]");
+    if (target) {
+      label.textContent = target.dataset.cursor;
+      cursor.classList.add("has-label");
+    } else {
+      cursor.classList.remove("has-label");
+    }
+  });
+
+  (function loop() {
+    cx = lerp(cx, x, 0.22);
+    cy = lerp(cy, y, 0.22);
+    cursor.style.transform = `translate3d(${cx}px, ${cy}px, 0)`;
+    requestAnimationFrame(loop);
+  })();
+}
+
+// Chiude la tendina e poi cambia pagina.
+function leaveTo(url) {
+  const shutter = document.querySelector(".shutter");
+  if (!shutter || reducedMotion) {
+    window.location.href = url;
+    return;
+  }
+  shutter.classList.remove("is-opening");
+  shutter.classList.add("is-closed");
+  setTimeout(() => { window.location.href = url; }, 950);
+}
+
+// Animazioni di comparsa (.split e .reveal-up) quando entrano nello schermo.
+// Si osserva la .line (non lo .split, che è fuori dal suo overflow e quindi "invisibile").
+function initTextReveals(root = document) {
+  const els = [...root.querySelectorAll(".line, .reveal-up")];
+  const show = (el) => {
+    el.classList.add("in");
+    el.querySelectorAll(":scope > .split").forEach((s) => s.classList.add("in"));
+  };
+  if (!("IntersectionObserver" in window)) {
+    els.forEach(show);
+    return;
+  }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      show(entry.target);
+      io.unobserve(entry.target);
+    });
+  }, { threshold: 0.15 });
+  els.forEach((el) => io.observe(el));
+}
+
+// Ritardi a cascata per gli elementi dell'intro/hero.
+function stagger(selector, start = 0, step = 0.09) {
+  document.querySelectorAll(selector).forEach((el, i) => {
+    el.style.transitionDelay = `${start + i * step}s`;
+  });
+}
+
+// ===== INTRO (index.html) =====
 function initIntro() {
   const enter = document.getElementById("enter");
   if (!enter) return;
 
+  // Timecode stile videocamera (25 fps) + data in sovrimpressione
+  const tc = document.getElementById("timecode");
+  const startTime = performance.now();
+  (function tick() {
+    const t = (performance.now() - startTime) / 1000;
+    const f = Math.floor((t % 1) * 25);
+    tc.textContent = `${pad(Math.floor(t / 3600))}:${pad(Math.floor(t / 60) % 60)}:${pad(Math.floor(t) % 60)}:${pad(f)}`;
+    requestAnimationFrame(tick);
+  })();
+
+  const d = new Date();
+  const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+  document.getElementById("hudDate").textContent = `${months[d.getMonth()]}. ${pad(d.getDate())} ${d.getFullYear()}`;
+
+  // Parallasse leggera dello sfondo
+  const bg = document.querySelector(".intro-bg");
+  if (finePointer && !reducedMotion) {
+    window.addEventListener("mousemove", (e) => {
+      const px = (e.clientX / innerWidth - 0.5) * -30;
+      const py = (e.clientY / innerHeight - 0.5) * -30;
+      bg.style.setProperty("--px", `${px}px`);
+      bg.style.setProperty("--py", `${py}px`);
+    });
+  }
+
+  // Bottone magnetico
+  if (finePointer && !reducedMotion) {
+    enter.addEventListener("mousemove", (e) => {
+      const r = enter.getBoundingClientRect();
+      const mx = (e.clientX - r.left - r.width / 2) * 0.3;
+      const my = (e.clientY - r.top - r.height / 2) * 0.4;
+      enter.style.transform = `translate(${mx}px, ${my}px)`;
+    });
+    enter.addEventListener("mouseleave", () => { enter.style.transform = ""; });
+  }
+
+  // Preloader 000 → 100
+  const loader = document.getElementById("loader");
+  const count = document.getElementById("loaderCount");
+  const bar = document.getElementById("loaderBar");
+  const duration = reducedMotion ? 0 : 1500;
+  const t0 = performance.now();
+
+  stagger(".intro .split", 0.15, 0.1);
+  stagger(".intro .reveal-up", 0.4, 0.1);
+
+  (function load(now) {
+    const p = duration ? Math.min(1, (now - t0) / duration) : 1;
+    const eased = 1 - Math.pow(1 - p, 3);
+    count.textContent = pad(Math.round(eased * 100), 3);
+    bar.style.width = `${eased * 100}%`;
+    if (p < 1) {
+      requestAnimationFrame(load);
+    } else {
+      loader.classList.add("done");
+      document.body.classList.remove("is-loading");
+      setTimeout(() => initTextReveals(), 250);
+    }
+  })(t0);
+
   enter.addEventListener("click", (e) => {
     e.preventDefault();
     document.body.classList.add("leaving");
-    setTimeout(() => { window.location.href = enter.href; }, 600);
+    leaveTo(enter.href);
   });
 
-  // Invio = entra
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") enter.click();
+    if (e.key === "Enter" && document.activeElement === document.body) enter.click();
   });
 }
 
-// ===== Home (home.html) =====
-function renderProjects(grid) {
-  grid.innerHTML = projects.map((p) => `
-    <a class="card" data-type="${p.type}" href="${SITE}${p.slug}" target="_blank" rel="noopener">
-      <img src="${CDN}${p.img}" alt="${p.title}" loading="lazy">
-      <div class="card-info">
-        <h3 class="card-title">${p.title}</h3>
-        <span class="card-meta">${TYPE_LABEL[p.type]} · ${p.year}</span>
-      </div>
-    </a>
-  `).join("");
+// ===== HOME (home.html) =====
+const TYPE_LABEL = { photo: "foto", video: "video" };
+
+function mediaUrl(p, m, size) {
+  return `${MEDIA}${p.folder}/${size}/${m.src}`;
 }
 
-let io = null;
+function renderArchive(container) {
+  container.innerHTML = projects.map((p, pi) => {
+    const shots = p.media.map((m, mi) => `
+      <button class="shot" style="--ar: ${m.w} / ${m.h}" data-p="${pi}" data-m="${mi}" aria-label="${p.title}, ${mi + 1}">
+        <img src="${mediaUrl(p, m, "thumbs")}" alt="" loading="lazy" decoding="async" width="${m.w}" height="${m.h}">
+        ${m.video ? '<span class="shot-play">▶ video</span>' : ""}
+      </button>`).join("");
+    const n = p.media.length;
+    return `
+      <article class="row" data-type="${p.type}">
+        <div class="row-meta">
+          <span class="row-num">${pad(pi + 1)}</span>
+          <h2 class="row-title">${p.title}</h2>
+          <span class="row-sub">${p.year}, ${n} ${TYPE_LABEL[p.type]}</span>
+        </div>
+        <div class="strip">${shots}</div>
+      </article>`;
+  }).join("");
 
-// (Ri)osserva le card non ancora apparse: va richiamata anche dopo un filtro,
-// perché le card nascoste con display:none non vengono notificate dall'observer.
-function revealOnScroll(cards) {
-  if (!("IntersectionObserver" in window)) {
-    cards.forEach((c) => c.classList.add("visible"));
-    return;
-  }
-  if (io) {
-    cards.forEach((c) => {
-      if (c.classList.contains("visible")) return;
-      io.unobserve(c);
-      io.observe(c);
-    });
-    return;
-  }
-  io = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (!entry.isIntersecting) return;
-      entry.target.style.transitionDelay = `${(i % 4) * 80}ms`;
-      entry.target.classList.add("visible");
-      io.unobserve(entry.target);
-    });
-  }, { threshold: 0.1 });
-  cards.forEach((c) => io.observe(c));
+  container.querySelectorAll(".shot img").forEach((img) => {
+    if (img.complete) img.classList.add("loaded");
+    else img.addEventListener("load", () => img.classList.add("loaded"), { once: true });
+  });
 }
 
-function initFilters(cards, nav, toggle) {
+function initFilters(rows) {
   const buttons = document.querySelectorAll(".filter");
 
   function apply(filter) {
     buttons.forEach((b) => b.classList.toggle("active", b.dataset.filter === filter));
-    cards.forEach((c) => c.classList.toggle("hidden", filter !== "all" && c.dataset.type !== filter));
-    revealOnScroll(cards.filter((c) => !c.classList.contains("hidden")));
+    rows.forEach((r) => { r.hidden = filter !== "all" && r.dataset.type !== filter; });
   }
 
   buttons.forEach((btn) => {
     btn.addEventListener("click", () => {
       apply(btn.dataset.filter);
-      history.replaceState(null, "", btn.dataset.filter === "all" ? "home.html" : `#${btn.dataset.filter}`);
-      closeMenu(nav, toggle);
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      history.replaceState(null, "", btn.dataset.filter === "all" ? location.pathname : `#${btn.dataset.filter}`);
+      window.scrollTo({ top: 0 });
     });
   });
 
@@ -120,39 +244,103 @@ function initFilters(cards, nav, toggle) {
   window.addEventListener("hashchange", applyHash);
 }
 
-function closeMenu(nav, toggle) {
-  nav.classList.remove("open");
-  toggle.setAttribute("aria-expanded", "false");
+// Visore a schermo intero: scorre le foto/video del progetto aperto.
+function initViewer(container) {
+  const viewer = document.getElementById("viewer");
+  const stage = document.getElementById("viewerStage");
+  const title = document.getElementById("viewerTitle");
+  const count = document.getElementById("viewerCount");
+  let p = null, i = 0, lastFocus = null;
+
+  function show() {
+    const m = p.media[i];
+    count.textContent = `${i + 1} / ${p.media.length}`;
+    if (m.video) {
+      stage.innerHTML = `<video src="${MEDIA}${p.folder}/${m.video}" poster="${mediaUrl(p, m, "web")}" controls autoplay playsinline></video>`;
+    } else {
+      stage.innerHTML = `<img src="${mediaUrl(p, m, "web")}" alt="${p.title}, ${i + 1}">`;
+    }
+    // precarica la successiva
+    const next = p.media[(i + 1) % p.media.length];
+    if (!next.video) new Image().src = mediaUrl(p, next, "web");
+  }
+
+  function open(pi, mi) {
+    p = projects[pi];
+    i = mi;
+    title.textContent = `${p.title}, ${p.year}`;
+    lastFocus = document.activeElement;
+    viewer.hidden = false;
+    document.body.classList.add("viewer-open");
+    show();
+    document.getElementById("viewerClose").focus();
+  }
+
+  function close() {
+    viewer.hidden = true;
+    stage.innerHTML = "";
+    document.body.classList.remove("viewer-open");
+    if (lastFocus) lastFocus.focus();
+  }
+
+  const step = (d) => {
+    i = (i + d + p.media.length) % p.media.length;
+    show();
+  };
+
+  container.addEventListener("click", (e) => {
+    const shot = e.target.closest(".shot");
+    if (shot) open(+shot.dataset.p, +shot.dataset.m);
+  });
+
+  document.getElementById("viewerClose").addEventListener("click", close);
+  document.getElementById("viewerPrev").addEventListener("click", () => step(-1));
+  document.getElementById("viewerNext").addEventListener("click", () => step(1));
+
+  document.addEventListener("keydown", (e) => {
+    if (viewer.hidden) return;
+    if (e.key === "Escape") close();
+    else if (e.key === "ArrowLeft") step(-1);
+    else if (e.key === "ArrowRight") step(1);
+  });
+
+  // Swipe su mobile
+  let x0 = null;
+  viewer.addEventListener("touchstart", (e) => { x0 = e.touches[0].clientX; }, { passive: true });
+  viewer.addEventListener("touchend", (e) => {
+    if (x0 === null) return;
+    const dx = e.changedTouches[0].clientX - x0;
+    if (Math.abs(dx) > 50) step(dx < 0 ? 1 : -1);
+    x0 = null;
+  });
 }
 
 function initHome() {
-  const grid = document.getElementById("projects");
-  if (!grid) return;
+  const container = document.getElementById("archive");
+  if (!container) return;
 
-  renderProjects(grid);
-  const cards = [...grid.querySelectorAll(".card")];
-  revealOnScroll(cards);
-
-  const nav = document.getElementById("siteNav");
-  const toggle = document.getElementById("menuToggle");
-
-  toggle.addEventListener("click", () => {
-    const open = nav.classList.toggle("open");
-    toggle.setAttribute("aria-expanded", String(open));
-  });
-  nav.querySelector(".nav-link").addEventListener("click", () => closeMenu(nav, toggle));
-
-  initFilters(cards, nav, toggle);
+  renderArchive(container);
+  initFilters([...container.querySelectorAll(".row")]);
+  initViewer(container);
 
   document.getElementById("backTop").addEventListener("click", (e) => {
     e.preventDefault();
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0, behavior: reducedMotion ? "auto" : "smooth" });
   });
 
   document.getElementById("year").textContent = new Date().getFullYear();
 }
 
+// Se si torna indietro dalla cronologia (bfcache) la tendina potrebbe restare chiusa.
+window.addEventListener("pageshow", (e) => {
+  if (!e.persisted) return;
+  document.body.classList.remove("leaving");
+  const shutter = document.querySelector(".shutter");
+  if (shutter) shutter.classList.remove("is-closed", "is-opening");
+});
+
 document.addEventListener("DOMContentLoaded", () => {
+  initCursor();
   initIntro();
   initHome();
 });

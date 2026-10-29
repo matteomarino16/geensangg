@@ -3,45 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gianmarco Palazzo — Work</title>
-  <meta name="description" content="Progetti di fotografia e video di Gianmarco Palazzo (Geensang)">
+  <title>Gianmarco Palazzo — Lavori</title>
+  <meta name="description" content="Foto e video di Gianmarco Palazzo (Geensang)">
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="home">
 
-  <header class="site-header">
-    <a href="index.html" class="logo">Gianmarco Palazzo</a>
-
-    <button class="menu-toggle" id="menuToggle" aria-label="Apri menu" aria-expanded="false">
-      <span></span><span></span>
-    </button>
-
-    <nav class="site-nav" id="siteNav">
-      <button class="filter active" data-filter="all">All</button>
-      <button class="filter" data-filter="photo">Photography</button>
+  <header class="top">
+    <a href="index.html" class="top-name">
+      Gianmarco Palazzo
+      <span>fotografia e video</span>
+    </a>
+    <nav class="top-nav" aria-label="Filtri">
+      <button class="filter active" data-filter="all">Tutto</button>
+      <button class="filter" data-filter="photo">Foto</button>
       <button class="filter" data-filter="video">Video</button>
-      <a href="#contact" class="nav-link">Contact</a>
+      <a href="#info">Info</a>
     </nav>
   </header>
 
-  <main>
-    <section class="grid" id="projects" aria-live="polite"></section>
+  <main class="archive" id="archive"></main>
 
-    <section class="contact" id="contact">
-      <h2>Contact</h2>
-      <p>Per collaborazioni, shooting e video scrivimi.</p>
-      <a href="mailto:tonicwaee@gmail.com" class="contact-mail">tonicwaee@gmail.com</a>
-      <ul class="contact-links">
-        <li><a href="https://www.instagram.com/geensang/" target="_blank" rel="noopener">Instagram</a></li>
-        <li><a href="https://www.linkedin.com/in/gianmarco-palazzo-12b05627b/" target="_blank" rel="noopener">LinkedIn</a></li>
-      </ul>
-    </section>
-  </main>
+  <section class="info" id="info">
+    <p class="info-lead">Gianmarco Palazzo, in arte Geensang. Fotografo e videomaker, Italia.</p>
+    <dl class="info-list">
+      <div><dt>Email</dt><dd><a href="mailto:tonicwaee@gmail.com">tonicwaee@gmail.com</a></dd></div>
+      <div><dt>Instagram</dt><dd><a href="https://www.instagram.com/geensang/" target="_blank" rel="noopener">@geensang</a></dd></div>
+      <div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/gianmarco-palazzo-12b05627b/" target="_blank" rel="noopener">Gianmarco Palazzo</a></dd></div>
+    </dl>
+  </section>
 
-  <footer class="site-footer">
-    <a href="#" class="back-top" id="backTop">↑ Back to Top</a>
-    <span>© <span id="year"></span> Geensang</span>
+  <footer class="bottom">
+    <span>© <span id="year"></span></span>
+    <a href="#" id="backTop">Torna su</a>
   </footer>
+
+  <!-- Visore a schermo intero -->
+  <div class="viewer" id="viewer" role="dialog" aria-modal="true" aria-label="Visore" hidden>
+    <div class="viewer-bar">
+      <span class="viewer-title" id="viewerTitle"></span>
+      <span class="viewer-count" id="viewerCount"></span>
+      <button class="viewer-close" id="viewerClose">Chiudi</button>
+    </div>
+    <div class="viewer-stage" id="viewerStage"></div>
+    <button class="viewer-prev" id="viewerPrev" aria-label="Precedente"></button>
+    <button class="viewer-next" id="viewerNext" aria-label="Successiva"></button>
+  </div>
 
   <script src="script.js"></script>
 </body>

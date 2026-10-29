@@ -3,39 +3,63 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gianmarco Palazzo</title>
+  <title>Gianmarco Palazzo — Geensang</title>
   <meta name="description" content="Gianmarco Palazzo — Photographer \ Videographer based in Italy">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="intro">
+<body class="intro is-loading">
 
+  <!-- Preloader -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <span class="loader-label">Loading tape</span>
+    <span class="loader-count" id="loaderCount">000</span>
+    <span class="loader-bar"><span id="loaderBar"></span></span>
+  </div>
+
+  <!-- Sfondo -->
   <div class="intro-bg" aria-hidden="true"></div>
-  <div class="intro-overlay" aria-hidden="true"></div>
+  <div class="scanlines" aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- HUD videocamera -->
+  <div class="hud" aria-hidden="true">
+    <div class="hud-corner tl"><span class="rec-dot"></span>REC</div>
+    <div class="hud-corner tr" id="timecode">00:00:00:00</div>
+    <div class="hud-corner bl">PLAY ▶ SP<br><span id="hudDate"></span></div>
+    <div class="hud-corner br">IT ◉ 37°N<br>CH 03</div>
+    <span class="frame-mark f1"></span><span class="frame-mark f2"></span>
+    <span class="frame-mark f3"></span><span class="frame-mark f4"></span>
+  </div>
 
   <main class="intro-content">
-    <h1 class="intro-title">Gianmarco Palazzo</h1>
-    <p class="intro-subtitle">Photographer\Videographer<br>Based in Italy</p>
+    <p class="intro-kicker reveal-up">Portfolio — Vol. 2026</p>
 
-    <a href="home.html" class="btn-enter" id="enter">Entra</a>
+    <h1 class="intro-title" aria-label="Gianmarco Palazzo">
+      <span class="line"><span class="split glitch" data-text="GIANMARCO">GIANMARCO</span></span>
+      <span class="line"><span class="split glitch" data-text="PALAZZO">PALAZZO</span></span>
+    </h1>
 
-    <ul class="social">
-      <li>
-        <a href="https://www.linkedin.com/in/gianmarco-palazzo-12b05627b/" target="_blank" rel="noopener" aria-label="LinkedIn">
-          <svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.5c0-1.3-.02-3-1.83-3-1.83 0-2.1 1.43-2.1 2.9V21H9z"/></svg>
-        </a>
-      </li>
-      <li>
-        <a href="https://www.instagram.com/geensang/" target="_blank" rel="noopener" aria-label="Instagram">
-          <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s0 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07s-3.58 0-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.2 15.58 2.2 15.2 2.2 12s0-3.58.07-4.85C2.42 3.92 3.94 2.37 7.15 2.22 8.42 2.2 8.8 2.2 12 2.2zM12 0C8.74 0 8.33 0 7.05.07 2.7.27.27 2.69.07 7.05 0 8.33 0 8.74 0 12s0 3.67.07 4.95c.2 4.36 2.62 6.78 6.98 6.98C8.33 24 8.74 24 12 24s3.67 0 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98C24 15.67 24 15.26 24 12s0-3.67-.07-4.95C23.73 2.7 21.3.27 16.95.07 15.67 0 15.26 0 12 0zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/></svg>
-        </a>
-      </li>
-      <li>
-        <a href="mailto:tonicwaee@gmail.com" aria-label="Email">
-          <svg viewBox="0 0 24 24"><path d="M2 4h20a1 1 0 0 1 1 1v.4l-11 6.9L1 5.4V5a1 1 0 0 1 1-1zm-1 3.75 11 6.9 11-6.9V19a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1z"/></svg>
-        </a>
-      </li>
+    <p class="intro-subtitle reveal-up">Photographer \ Videographer <span class="sep">—</span> Based in Italy</p>
+
+    <a href="home.html" class="btn-enter reveal-up" id="enter" data-cursor="Play">
+      <span class="btn-enter-text" data-hover="Entra →">Entra</span>
+    </a>
+
+    <ul class="social reveal-up">
+      <li><a href="https://www.instagram.com/geensang/" target="_blank" rel="noopener" data-cursor="IG">Instagram</a></li>
+      <li><a href="https://www.linkedin.com/in/gianmarco-palazzo-12b05627b/" target="_blank" rel="noopener" data-cursor="IN">LinkedIn</a></li>
+      <li><a href="mailto:tonicwaee@gmail.com" data-cursor="Mail">Email</a></li>
     </ul>
   </main>
+
+  <!-- Transizione -->
+  <div class="shutter" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+
+  <div class="cursor" aria-hidden="true"><span class="cursor-label"></span></div>
 
   <script src="script.js"></script>
 </body>
