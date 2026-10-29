@@ -2,6 +2,30 @@
    GEENSANG — Gianmarco Palazzo
    ========================================================= */
 
+@font-face {
+  font-family: "Anton";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/anton-400.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Space Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/space-mono-400.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Space Mono";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("fonts/space-mono-700.woff2") format("woff2");
+}
+
 *,
 *::before,
 *::after {
@@ -179,56 +203,20 @@ body.intro {
   overflow: hidden;
 }
 
-/* Preloader */
-.loader {
-  position: fixed;
-  inset: 0;
-  z-index: 160;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: var(--gutter);
-  background: #000;
-  transition: transform 1s var(--ease);
-}
-
-.loader.done { transform: translateY(-100%); }
-
-.loader-label {
-  font-size: 11px;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
-.loader-count {
-  font-family: var(--display);
-  font-size: clamp(6rem, 22vw, 18rem);
-  line-height: .85;
-}
-
-.loader-bar {
-  display: block;
-  height: 2px;
-  margin-top: 1.2rem;
-  background: var(--line);
-}
-
-.loader-bar span {
-  display: block;
-  height: 100%;
-  width: 0;
-  background: var(--red);
-}
-
 /* Sfondo */
 .intro-bg {
   position: fixed;
   inset: -4%;
-  background: url("https://cdn.myportfolio.com/8b7347df-6b14-4ca2-82a1-d36a3bbc4a6c/beddafff-4d42-4ec5-b1eb-77f6d9a4cc45_rwc_0x4x788x575x4096.gif?h=6ea88fb95d9160f3a4fe974d8367a447") center / cover no-repeat;
+  background: #000 url("media/intro-poster.jpg") center / cover no-repeat;
   filter: contrast(1.15) saturate(1.2) brightness(.6);
   transform: translate3d(var(--px, 0), var(--py, 0), 0) scale(1.08);
   transition: transform .8s var(--ease-out);
+}
+
+.intro-bg video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .scanlines {
@@ -459,6 +447,33 @@ body.intro {
   transform-origin: left;
 }
 
+.intro-legal {
+  margin-top: 1.4rem;
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  opacity: .6;
+}
+
+.intro-legal a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* Firma */
+.credit {
+  position: fixed;
+  left: 50%;
+  bottom: calc(var(--gutter) + 8px);
+  z-index: 12;
+  transform: translateX(-50%);
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  opacity: .8;
+  transition: opacity .2s;
+}
+
+.credit:hover { opacity: 1; text-decoration: underline; text-underline-offset: 3px; }
+
 /* Uscita: glitch forte prima della tendina */
 body.leaving .intro-bg { filter: contrast(2) saturate(2) hue-rotate(40deg) brightness(.8); transform: scale(1.2); transition: all .7s var(--ease); }
 body.leaving .intro-content { animation: shake .3s steps(2) 2; }
@@ -473,10 +488,10 @@ body.leaving .intro-content { animation: shake .3s steps(2) 2; }
    HOME — archivio
    ========================================================= */
 body.home {
-  --paper: #eeece6;
-  --ink: #141414;
-  --soft: #8b8984;
-  --rule: rgba(20, 20, 20, .16);
+  --paper: #0a0a0a;
+  --ink: #ecebe6;
+  --soft: #7a7873;
+  --rule: rgba(236, 235, 230, .14);
   --strip-h: clamp(190px, 30vh, 320px);
   background: var(--paper);
   color: var(--ink);
@@ -572,11 +587,15 @@ body.home ::selection { background: var(--ink); color: var(--paper); }
 
 .shot {
   position: relative;
+  display: block;
+  aspect-ratio: var(--ar);
+  background: #1a1a1a;
+  cursor: zoom-in;
+}
+
+.strip .shot {
   flex: none;
   height: var(--strip-h);
-  aspect-ratio: var(--ar);
-  background: #dcd9d2;
-  cursor: zoom-in;
 }
 
 .shot img {
@@ -600,43 +619,150 @@ body.home ::selection { background: var(--ink); color: var(--paper); }
   text-shadow: 0 0 8px rgba(0, 0, 0, .6);
 }
 
+.row-title a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* Intestazione dell'archivio */
+.page-intro {
+  display: grid;
+  grid-template-columns: minmax(150px, 15%) 1fr;
+  gap: 16px;
+  padding: 24px var(--gutter) 40px;
+}
+
+.page-intro h1 {
+  max-width: 38ch;
+  font-size: clamp(20px, 2.4vw, 32px);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -.01em;
+}
+
 /* Info */
 .info {
   display: grid;
   grid-template-columns: minmax(150px, 15%) 1fr;
-  gap: 16px;
+  gap: 28px 16px;
   margin: 60px var(--gutter) 0;
   padding: 14px 0 80px;
   border-top: 1px solid var(--ink);
 }
 
+.info-label {
+  grid-column: 1;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--soft);
+}
+
+.info-lead,
+.info-services,
+.faq,
+.info-list { grid-column: 2; }
+
 .info-lead {
-  grid-column: 2;
   max-width: 34ch;
   font-size: clamp(20px, 2.4vw, 32px);
   line-height: 1.15;
   letter-spacing: -.01em;
 }
 
+.info-services { max-width: 70ch; }
+.info-services li + li { margin-top: 6px; }
+.info-services strong { font-weight: 500; }
+
+.faq { max-width: 70ch; }
+.faq-item + .faq-item { margin-top: 16px; }
+.faq dt { font-weight: 500; }
+.faq dd { color: var(--soft); margin-top: 2px; }
+
 .info-list {
-  grid-column: 2;
   display: flex;
   flex-wrap: wrap;
   gap: 8px 40px;
-  margin-top: 28px;
 }
 
 .info-list dt { color: var(--soft); }
 .info-list a:hover { text-decoration: underline; text-underline-offset: 3px; }
 
 .bottom {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 16px;
+  align-items: center;
   padding: 14px var(--gutter);
   color: var(--soft);
 }
 
 .bottom a:hover { color: var(--ink); }
+.bottom #backTop { justify-self: end; }
+.credit-home { color: var(--ink); }
+.credit-home:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* Pagine progetto e pagine legali */
+.page { padding: 24px var(--gutter) 60px; }
+
+.crumbs { color: var(--soft); margin-bottom: 40px; }
+.crumbs a:hover { color: var(--ink); }
+
+.page-head { max-width: 60ch; margin-bottom: 40px; }
+
+.page h1 {
+  font-size: clamp(28px, 4vw, 56px);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -.02em;
+}
+
+.page-meta { color: var(--soft); margin-top: 10px; }
+
+.page-desc {
+  margin-top: 18px;
+  font-size: clamp(15px, 1.4vw, 18px);
+  line-height: 1.4;
+}
+
+.gallery {
+  columns: 2 320px;
+  column-gap: 8px;
+}
+
+.gallery .shot,
+.gallery .clip {
+  width: 100%;
+  margin-bottom: 8px;
+  break-inside: avoid;
+}
+
+.gallery-video { columns: 1; max-width: 1200px; }
+
+.clip video {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #000;
+}
+
+.clip figcaption { color: var(--soft); padding: 6px 0 20px; }
+
+.pager {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 16px;
+  margin-top: 60px;
+  padding-top: 14px;
+  border-top: 1px solid var(--rule);
+}
+
+.pager a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.pager a[rel="next"] { text-align: right; }
+
+.legal { max-width: 760px; }
+.legal h1 { margin-bottom: 0; }
+.legal h2 { font-size: 18px; font-weight: 500; margin: 40px 0 10px; }
+.legal h3 { font-size: 14px; font-weight: 500; margin: 20px 0 6px; }
+.legal p { font-size: 15px; line-height: 1.55; margin-top: 10px; }
+.legal p a,
+.page-desc a { text-decoration: underline; text-underline-offset: 3px; }
 
 /* Visore */
 .viewer {
@@ -701,14 +827,29 @@ body.viewer-open { overflow: hidden; }
 @media (max-width: 760px) {
   .hud-corner.bl, .hud-corner.br { font-size: 10px; }
 
+  /* sopra gli angoli dell'HUD, che in basso occupano tutta la larghezza */
+  .credit { bottom: calc(var(--gutter) + 56px); font-size: 10px; }
+
   body.home { --strip-h: 210px; }
 
   .row,
-  .info { grid-template-columns: 1fr; gap: 10px; }
+  .info,
+  .page-intro { grid-template-columns: 1fr; gap: 10px; }
+
+  .info-label { margin-top: 18px; }
+
+  .bottom { grid-template-columns: 1fr; justify-items: center; text-align: center; }
+  .bottom #backTop { justify-self: center; }
+
+  .pager { grid-template-columns: 1fr 1fr; }
+  .pager a[href$="home.html"] { display: none; }
 
   .row-meta { flex-direction: row; gap: 8px; flex-wrap: wrap; }
 
+  .info-label,
   .info-lead,
+  .info-services,
+  .faq,
   .info-list { grid-column: 1; }
 
   .archive { padding-right: 0; }
@@ -729,6 +870,5 @@ body.viewer-open { overflow: hidden; }
     transition: none !important;
   }
   .split, .reveal-up { transform: none; opacity: 1; }
-  .loader { display: none; }
   body.home::before { display: none; }
 }

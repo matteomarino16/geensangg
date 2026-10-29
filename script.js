@@ -1,33 +1,4 @@
-// ===== Dati progetti =====
-// Foto e video stanno in progetti/<cartella>/ (originali), con versioni leggere in thumbs/ e web/.
-// media: elenco in ordine; w/h servono a riservare lo spazio prima che l'immagine carichi.
-const MEDIA = "progetti/";
-
-const projects = [
-  { title: "Redbull x Adidas in Sneakers 76", year: 2026, type: "photo", folder: "01-redbull-x-adidas-in-sneakers-76", media: [{ src: "01.jpg", w: 600, h: 900 }, { src: "02.jpg", w: 675, h: 900 }, { src: "03.jpg", w: 600, h: 900 }, { src: "04.jpg", w: 600, h: 900 }, { src: "05.jpg", w: 600, h: 900 }, { src: "06.jpg", w: 600, h: 900 }, { src: "07.jpg", w: 675, h: 900 }, { src: "08.jpg", w: 600, h: 900 }, { src: "09.jpg", w: 600, h: 900 }, { src: "10.jpg", w: 600, h: 900 }, { src: "11.jpg", w: 600, h: 900 }] },
-  { title: "Silhouette", year: 2026, type: "photo", folder: "02-silhouette", media: [{ src: "01.jpg", w: 720, h: 900 }, { src: "02.jpg", w: 600, h: 900 }, { src: "03.jpg", w: 600, h: 900 }, { src: "04.jpg", w: 600, h: 900 }, { src: "05.jpg", w: 613, h: 900 }, { src: "06.jpg", w: 600, h: 900 }] },
-  { title: "Fashion Killa", year: 2026, type: "photo", folder: "03-fashion-killa", media: [{ src: "01.jpg", w: 600, h: 900 }, { src: "02.jpg", w: 720, h: 900 }, { src: "03.jpg", w: 720, h: 900 }, { src: "04.jpg", w: 600, h: 900 }, { src: "05.jpg", w: 720, h: 900 }, { src: "06.jpg", w: 720, h: 900 }, { src: "07.jpg", w: 675, h: 900 }, { src: "08.jpg", w: 720, h: 900 }] },
-  { title: "Aura", year: 2026, type: "photo", folder: "04-aura", media: [{ src: "01.jpg", w: 900, h: 672 }, { src: "02.jpg", w: 900, h: 672 }] },
-  { title: "Wehea\\Bolla Merch", year: 2025, type: "photo", folder: "05-weheabolla-merch", media: [{ src: "01.jpg", w: 720, h: 900 }, { src: "02.jpg", w: 900, h: 600 }, { src: "03.jpg", w: 720, h: 900 }, { src: "04.jpg", w: 900, h: 600 }, { src: "05.jpg", w: 720, h: 900 }, { src: "06.jpg", w: 600, h: 900 }] },
-  { title: "Nightlife", year: 2025, type: "photo", folder: "06-nightlife", media: [{ src: "01.jpg", w: 900, h: 600 }, { src: "02.jpg", w: 600, h: 900 }, { src: "03.jpg", w: 600, h: 900 }, { src: "04.jpg", w: 900, h: 600 }, { src: "05.jpg", w: 600, h: 900 }, { src: "06.jpg", w: 720, h: 900 }, { src: "07.jpg", w: 900, h: 600 }, { src: "08.jpg", w: 600, h: 900 }, { src: "09.jpg", w: 900, h: 600 }] },
-  { title: "Wehea || Bolla || Lookbook", year: 2026, type: "photo", folder: "07-wehea-bolla-lookbook", media: [{ src: "01.jpg", w: 600, h: 900 }, { src: "02.jpg", w: 600, h: 900 }, { src: "03.jpg", w: 600, h: 900 }, { src: "04.jpg", w: 600, h: 900 }, { src: "05.jpg", w: 600, h: 900 }, { src: "06.jpg", w: 600, h: 900 }, { src: "07.jpg", w: 600, h: 900 }, { src: "08.jpg", w: 600, h: 900 }, { src: "09.jpg", w: 600, h: 900 }, { src: "10.jpg", w: 600, h: 900 }] },
-  { title: "Tattoo\\4", year: 2025, type: "photo", folder: "08-savage-tattoo", media: [{ src: "01.jpg", w: 900, h: 660 }, { src: "02.jpg", w: 900, h: 510 }, { src: "03.jpg", w: 900, h: 600 }, { src: "04.jpg", w: 900, h: 797 }] },
-  { title: "DMT x Sound Department", year: 2025, type: "photo", folder: "09-dmt-x-sound-department", media: [{ src: "01.jpg", w: 900, h: 600 }, { src: "02.jpg", w: 600, h: 900 }, { src: "03.jpg", w: 900, h: 600 }, { src: "04.jpg", w: 600, h: 900 }, { src: "05.jpg", w: 900, h: 600 }, { src: "06.jpg", w: 600, h: 900 }] },
-  { title: "El Cohiba", year: 2025, type: "photo", folder: "10-el-cohiba", media: [{ src: "01.jpg", w: 900, h: 600 }, { src: "02.jpg", w: 600, h: 900 }, { src: "03.jpg", w: 900, h: 627 }, { src: "04.jpg", w: 600, h: 900 }] },
-  { title: "OnTheRocks", year: 2024, type: "photo", folder: "11-ontherocks", media: [{ src: "01.jpg", w: 600, h: 900 }, { src: "02.jpg", w: 600, h: 900 }, { src: "03.jpg", w: 600, h: 900 }, { src: "04.jpg", w: 600, h: 900 }, { src: "05.jpg", w: 600, h: 900 }, { src: "06.jpg", w: 600, h: 900 }] },
-  { title: "Wehea Lookbook", year: 2025, type: "photo", folder: "12-wehea-lookbook", media: [{ src: "01.jpg", w: 720, h: 900 }, { src: "02.jpg", w: 720, h: 900 }, { src: "03.jpg", w: 720, h: 900 }, { src: "04.jpg", w: 720, h: 900 }, { src: "05.jpg", w: 720, h: 900 }, { src: "06.jpg", w: 720, h: 900 }] },
-  { title: "MRC x Hangar", year: 2025, type: "photo", folder: "13-mrc-x-hangar", media: [{ src: "01.jpg", w: 724, h: 900 }, { src: "02.jpg", w: 900, h: 600 }, { src: "03.jpg", w: 900, h: 600 }, { src: "04.jpg", w: 600, h: 900 }, { src: "05.jpg", w: 900, h: 600 }, { src: "06.jpg", w: 600, h: 900 }] },
-  { title: "Southern Italian Escape", year: 2024, type: "photo", folder: "14-southern-italian-escape", media: [{ src: "01.jpg", w: 600, h: 900 }, { src: "02.jpg", w: 600, h: 900 }, { src: "03.jpg", w: 600, h: 900 }, { src: "04.jpg", w: 600, h: 900 }, { src: "05.jpg", w: 600, h: 900 }, { src: "06.jpg", w: 600, h: 900 }, { src: "07.jpg", w: 600, h: 900 }] },
-  { title: "Basketball", year: 2025, type: "photo", folder: "15-basketball", media: [{ src: "01.jpg", w: 600, h: 900 }, { src: "02.jpg", w: 600, h: 900 }, { src: "03.jpg", w: 600, h: 900 }] },
-  { title: "Mare Frame", year: 2025, type: "photo", folder: "16-mare-frame", media: [{ src: "01.jpg", w: 900, h: 675 }, { src: "02.jpg", w: 900, h: 630 }] },
-  { title: "Bolla\\Wehea Fashion Show", year: 2025, type: "video", folder: "17-bollawehea-fashion-show", media: [{ src: "video-01-poster.jpg", w: 900, h: 506, video: "video-01.mp4" }, { src: "video-02-poster.jpg", w: 900, h: 506, video: "video-02.mp4" }, { src: "video-03-poster.jpg", w: 900, h: 506, video: "video-03.mp4" }] },
-  { title: "WeheaCreativeStudio x Tears4Dinner", year: 2025, type: "video", folder: "18-weheacreativestudio-x-tears4dinner", media: [{ src: "video-01-poster.jpg", w: 900, h: 508, video: "video-01.mp4" }] },
-  { title: "WCS", year: 2025, type: "video", folder: "19-wcs", media: [{ src: "video-01-poster.jpg", w: 900, h: 658, video: "video-01.mp4" }] },
-  { title: "Wehea present Mythcore Fashion Show", year: 2025, type: "video", folder: "20-wehea-present-mythcore-fashion-show", media: [{ src: "video-01-poster.jpg", w: 900, h: 720, video: "video-01.mp4" }] },
-  { title: "MTFK Teaser", year: 2025, type: "video", folder: "21-mtfk-teaser", media: [{ src: "video-01-poster.jpg", w: 900, h: 720, video: "video-01.mp4" }] },
-  { title: "Afrobar Vibes", year: 2025, type: "video", folder: "22-afrobar-vibes", media: [{ src: "video-01-poster.jpg", w: 900, h: 720, video: "video-01.mp4" }] },
-  { title: "Nightlife Footages", year: 2025, type: "video", folder: "23-gianma-bln-in-catania-sunrise", media: [{ src: "video-01-poster.jpg", w: 900, h: 506, video: "video-01.mp4" }, { src: "video-02-poster.jpg", w: 900, h: 506, video: "video-02.mp4" }] },
-];
+// ===== GEENSANG — script del sito =====
 
 const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -151,29 +122,18 @@ function initIntro() {
     enter.addEventListener("mouseleave", () => { enter.style.transform = ""; });
   }
 
-  // Preloader 000 → 100
-  const loader = document.getElementById("loader");
-  const count = document.getElementById("loaderCount");
-  const bar = document.getElementById("loaderBar");
-  const duration = reducedMotion ? 0 : 1500;
-  const t0 = performance.now();
-
   stagger(".intro .split", 0.15, 0.1);
   stagger(".intro .reveal-up", 0.4, 0.1);
+  requestAnimationFrame(() => initTextReveals());
 
-  (function load(now) {
-    const p = duration ? Math.min(1, (now - t0) / duration) : 1;
-    const eased = 1 - Math.pow(1 - p, 3);
-    count.textContent = pad(Math.round(eased * 100), 3);
-    bar.style.width = `${eased * 100}%`;
-    if (p < 1) {
-      requestAnimationFrame(load);
-    } else {
-      loader.classList.add("done");
-      document.body.classList.remove("is-loading");
-      setTimeout(() => initTextReveals(), 250);
-    }
-  })(t0);
+  // Alcuni browser bloccano l'autoplay finché la pagina non è visibile: riprova.
+  const video = document.querySelector(".intro-bg video");
+  if (video) {
+    const play = () => video.play().catch(() => {});
+    play();
+    document.addEventListener("visibilitychange", play);
+    document.addEventListener("pointerdown", play, { once: true });
+  }
 
   enter.addEventListener("click", (e) => {
     e.preventDefault();
@@ -183,38 +143,6 @@ function initIntro() {
 
   document.addEventListener("keydown", (e) => {
     if (e.key === "Enter" && document.activeElement === document.body) enter.click();
-  });
-}
-
-// ===== HOME (home.html) =====
-const TYPE_LABEL = { photo: "foto", video: "video" };
-
-function mediaUrl(p, m, size) {
-  return `${MEDIA}${p.folder}/${size}/${m.src}`;
-}
-
-function renderArchive(container) {
-  container.innerHTML = projects.map((p, pi) => {
-    const shots = p.media.map((m, mi) => `
-      <button class="shot" style="--ar: ${m.w} / ${m.h}" data-p="${pi}" data-m="${mi}" aria-label="${p.title}, ${mi + 1}">
-        <img src="${mediaUrl(p, m, "thumbs")}" alt="" loading="lazy" decoding="async" width="${m.w}" height="${m.h}">
-        ${m.video ? '<span class="shot-play">▶ video</span>' : ""}
-      </button>`).join("");
-    const n = p.media.length;
-    return `
-      <article class="row" data-type="${p.type}">
-        <div class="row-meta">
-          <span class="row-num">${pad(pi + 1)}</span>
-          <h2 class="row-title">${p.title}</h2>
-          <span class="row-sub">${p.year}, ${n} ${TYPE_LABEL[p.type]}</span>
-        </div>
-        <div class="strip">${shots}</div>
-      </article>`;
-  }).join("");
-
-  container.querySelectorAll(".shot img").forEach((img) => {
-    if (img.complete) img.classList.add("loaded");
-    else img.addEventListener("load", () => img.classList.add("loaded"), { once: true });
   });
 }
 
@@ -244,32 +172,44 @@ function initFilters(rows) {
   window.addEventListener("hashchange", applyHash);
 }
 
-// Visore a schermo intero: scorre le foto/video del progetto aperto.
-function initViewer(container) {
+// ===== HOME e pagine progetto =====
+// L'HTML è generato da build.py: qui si aggiungono solo filtri, visore e piccole comodità.
+
+// Visore a schermo intero: scorre gli elementi .shot del gruppo [data-gallery] cliccato.
+function initViewer() {
   const viewer = document.getElementById("viewer");
+  if (!viewer) return;
   const stage = document.getElementById("viewerStage");
   const title = document.getElementById("viewerTitle");
   const count = document.getElementById("viewerCount");
-  let p = null, i = 0, lastFocus = null;
+  let items = [], i = 0, lastFocus = null;
 
   function show() {
-    const m = p.media[i];
-    count.textContent = `${i + 1} / ${p.media.length}`;
-    if (m.video) {
-      stage.innerHTML = `<video src="${MEDIA}${p.folder}/${m.video}" poster="${mediaUrl(p, m, "web")}" controls autoplay playsinline></video>`;
+    const it = items[i];
+    count.textContent = `${i + 1} / ${items.length}`;
+    stage.innerHTML = "";
+    if (it.video) {
+      const v = document.createElement("video");
+      Object.assign(v, { src: it.video, poster: it.full, controls: true, autoplay: true, playsInline: true });
+      stage.append(v);
     } else {
-      stage.innerHTML = `<img src="${mediaUrl(p, m, "web")}" alt="${p.title}, ${i + 1}">`;
+      const img = new Image();
+      img.src = it.full;
+      img.alt = it.alt;
+      stage.append(img);
+      // precarica la successiva
+      const next = items[(i + 1) % items.length];
+      if (!next.video) new Image().src = next.full;
     }
-    // precarica la successiva
-    const next = p.media[(i + 1) % p.media.length];
-    if (!next.video) new Image().src = mediaUrl(p, next, "web");
   }
 
-  function open(pi, mi) {
-    p = projects[pi];
-    i = mi;
-    title.textContent = `${p.title}, ${p.year}`;
-    lastFocus = document.activeElement;
+  function open(shot) {
+    const group = shot.closest("[data-gallery]");
+    const shots = [...group.querySelectorAll(".shot")];
+    items = shots.map((s) => ({ full: s.dataset.full, video: s.dataset.video, alt: s.querySelector("img").alt }));
+    i = shots.indexOf(shot);
+    title.textContent = group.dataset.title;
+    lastFocus = shot;
     viewer.hidden = false;
     document.body.classList.add("viewer-open");
     show();
@@ -284,13 +224,13 @@ function initViewer(container) {
   }
 
   const step = (d) => {
-    i = (i + d + p.media.length) % p.media.length;
+    i = (i + d + items.length) % items.length;
     show();
   };
 
-  container.addEventListener("click", (e) => {
+  document.addEventListener("click", (e) => {
     const shot = e.target.closest(".shot");
-    if (shot) open(+shot.dataset.p, +shot.dataset.m);
+    if (shot) open(shot);
   });
 
   document.getElementById("viewerClose").addEventListener("click", close);
@@ -316,19 +256,24 @@ function initViewer(container) {
 }
 
 function initHome() {
-  const container = document.getElementById("archive");
-  if (!container) return;
-
-  renderArchive(container);
-  initFilters([...container.querySelectorAll(".row")]);
-  initViewer(container);
-
-  document.getElementById("backTop").addEventListener("click", (e) => {
-    e.preventDefault();
-    window.scrollTo({ top: 0, behavior: reducedMotion ? "auto" : "smooth" });
+  // Dissolvenza delle miniature quando arrivano
+  document.querySelectorAll(".shot img").forEach((img) => {
+    if (img.complete) img.classList.add("loaded");
+    else img.addEventListener("load", () => img.classList.add("loaded"), { once: true });
   });
 
-  document.getElementById("year").textContent = new Date().getFullYear();
+  const archive = document.getElementById("archive");
+  if (archive) initFilters([...archive.querySelectorAll(".row")]);
+
+  initViewer();
+
+  const backTop = document.getElementById("backTop");
+  if (backTop) {
+    backTop.addEventListener("click", (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: reducedMotion ? "auto" : "smooth" });
+    });
+  }
 }
 
 // Se si torna indietro dalla cronologia (bfcache) la tendina potrebbe restare chiusa.
