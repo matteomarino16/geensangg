@@ -195,8 +195,7 @@ def page(title, desc, path, body, p="", body_class="home", **kw):
 
 def top(p, filters=False):
     if filters:
-        nav = """      <button class="filter active" data-filter="all">Tutto</button>
-      <button class="filter" data-filter="photo">Foto</button>
+        nav = """      <button class="filter" data-filter="photo">Foto</button>
       <button class="filter" data-filter="video">Video</button>
       <a href="#info">Info</a>"""
     else:
@@ -205,7 +204,7 @@ def top(p, filters=False):
       <a href="{p}home.html#video">Video</a>
       <a href="{p}home.html#info">Info</a>"""
     return f"""  <header class="top">
-    <a href="{p}index.html" class="top-name">{NAME}<span>fotografia e video</span></a>
+    <a href="{p}index.html" class="top-name">{NAME}</a>
     <nav class="top-nav" aria-label="Menu">
 {nav}
     </nav>
@@ -260,7 +259,9 @@ def build_home(projects):
         shots = []
         for j, m in enumerate(pr["media"]):
             video = f' data-video="progetti/{pr["folder"]}/{m["video"]}"' if "video" in m else ""
-            play = '<span class="shot-play">▶ video</span>' if "video" in m else ""
+            # Anteprima muta in loop: parte da sola quando è visibile (vedi script.js); il clic apre il video completo
+            play = (f'<video class="shot-video" data-src="progetti/{pr["folder"]}/preview/{m["video"]}" muted loop playsinline preload="none" aria-hidden="true"></video>'
+                    '<span class="shot-play">▶ video</span>') if "video" in m else ""
             loading = 'loading="eager" fetchpriority="high"' if i == 0 and j < 3 else 'loading="lazy"'
             shots.append(
                 f'        <button class="shot" style="--ar: {m["w"]} / {m["h"]}" data-full="{media_path(pr, m, "web")}"{video} '
@@ -277,40 +278,17 @@ def build_home(projects):
       </div>
     </article>""")
 
-    years = sorted({p["year"] for p in projects})
-    services = "\n".join(f"        <li><strong>{esc(n)}</strong> — {esc(d)}</li>" for n, d in SERVICES)
-    faq = "\n".join(f"""        <div class="faq-item">
-          <dt>{esc(q)}</dt>
-          <dd>{esc(a)}</dd>
-        </div>""" for q, a in FAQ)
-
     body = f"""{top("", filters=True)}
 
   <main id="top">
-    <section class="page-intro">
-      <span class="row-num">Archivio</span>
-      <h1>{NAME}, fotografo e videomaker a {CITY}, {REGION}. {len(projects)} progetti di moda, eventi e nightlife, {years[0]}–{years[-1]}.</h1>
-    </section>
+    <h1 class="sr-only">Lavori di {NAME}, fotografo e videomaker a {CITY}</h1>
 
     <div class="archive" id="archive">
 {chr(10).join(rows)}
     </div>
 
     <section class="info" id="info" aria-labelledby="info-title">
-      <h2 class="info-label" id="info-title">Info</h2>
-      <p class="info-lead">{esc(SUMMARY)}</p>
-
-      <h3 class="info-label">Servizi</h3>
-      <ul class="info-services">
-{services}
-      </ul>
-
-      <h3 class="info-label">Domande frequenti</h3>
-      <dl class="faq">
-{faq}
-      </dl>
-
-      <h3 class="info-label">Contatti</h3>
+      <h2 class="info-label" id="info-title">Contatti</h2>
       <dl class="info-list">
         <div><dt>Email</dt><dd><a href="mailto:{EMAIL}">{EMAIL}</a></dd></div>
         <div><dt>Instagram</dt><dd><a href="{INSTAGRAM}" target="_blank" rel="noopener">@geensang</a></dd></div>
@@ -331,9 +309,6 @@ def build_home(projects):
          "mainEntity": {"@type": "ItemList", "numberOfItems": len(projects), "itemListElement": [
              {"@type": "ListItem", "position": i + 1, "url": project_url(pr, True), "name": pr["title"]}
              for i, pr in enumerate(projects)]}},
-        {"@type": "FAQPage", "@id": url("home.html#faq"),
-         "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}}
-                        for q, a in FAQ]},
         breadcrumb([("Home", url()), ("Lavori", url("home.html"))]),
         PERSON, BUSINESS,
     ]
@@ -353,7 +328,7 @@ def build_project(projects, i):
     for j, m in enumerate(pr["media"]):
         if "video" in m:
             items.append(f"""      <figure class="clip">
-        <video src="{p}progetti/{pr['folder']}/{m['video']}" poster="{media_path(pr, m, 'web', p)}" controls playsinline preload="metadata" width="{m['ww']}" height="{m['wh']}" aria-label="{esc(pr['title'])}: {esc(m['title'])}"></video>
+        <video src="{p}progetti/{pr['folder']}/{m['video']}" poster="{media_path(pr, m, 'web', p)}" controls autoplay muted loop playsinline preload="auto" width="{m['ww']}" height="{m['wh']}" aria-label="{esc(pr['title'])}: {esc(m['title'])}"></video>
         <figcaption>{esc(m['title'])}</figcaption>
       </figure>""")
         else:

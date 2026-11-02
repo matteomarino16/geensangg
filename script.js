@@ -86,20 +86,6 @@ function initIntro() {
   const enter = document.getElementById("enter");
   if (!enter) return;
 
-  // Timecode stile videocamera (25 fps) + data in sovrimpressione
-  const tc = document.getElementById("timecode");
-  const startTime = performance.now();
-  (function tick() {
-    const t = (performance.now() - startTime) / 1000;
-    const f = Math.floor((t % 1) * 25);
-    tc.textContent = `${pad(Math.floor(t / 3600))}:${pad(Math.floor(t / 60) % 60)}:${pad(Math.floor(t) % 60)}:${pad(f)}`;
-    requestAnimationFrame(tick);
-  })();
-
-  const d = new Date();
-  const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
-  document.getElementById("hudDate").textContent = `${months[d.getMonth()]}. ${pad(d.getDate())} ${d.getFullYear()}`;
-
   // Parallasse leggera dello sfondo
   const bg = document.querySelector(".intro-bg");
   if (finePointer && !reducedMotion) {
@@ -156,8 +142,10 @@ function initFilters(rows) {
 
   buttons.forEach((btn) => {
     btn.addEventListener("click", () => {
-      apply(btn.dataset.filter);
-      history.replaceState(null, "", btn.dataset.filter === "all" ? location.pathname : `#${btn.dataset.filter}`);
+      // Non c'è un tasto "Tutto": ricliccando il filtro attivo si torna a vedere tutto
+      const filter = btn.classList.contains("active") ? "all" : btn.dataset.filter;
+      apply(filter);
+      history.replaceState(null, "", filter === "all" ? location.pathname : `#${filter}`);
       window.scrollTo({ top: 0 });
     });
   });
@@ -255,12 +243,33 @@ function initViewer() {
   });
 }
 
+// Anteprime video nelle strisce: si caricano e partono solo quando sono sullo schermo.
+function initVideoPreviews() {
+  const videos = [...document.querySelectorAll(".shot-video")];
+  if (!videos.length || reducedMotion || !("IntersectionObserver" in window)) return;
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(({ target: v, isIntersecting }) => {
+      if (isIntersecting) {
+        if (!v.src) v.src = v.dataset.src;
+        v.play().then(() => v.classList.add("playing")).catch(() => {});
+      } else {
+        v.pause();
+      }
+    });
+  }, { rootMargin: "200px" });
+
+  videos.forEach((v) => io.observe(v));
+}
+
 function initHome() {
   // Dissolvenza delle miniature quando arrivano
   document.querySelectorAll(".shot img").forEach((img) => {
     if (img.complete) img.classList.add("loaded");
     else img.addEventListener("load", () => img.classList.add("loaded"), { once: true });
   });
+
+  initVideoPreviews();
 
   const archive = document.getElementById("archive");
   if (archive) initFilters([...archive.querySelectorAll(".row")]);

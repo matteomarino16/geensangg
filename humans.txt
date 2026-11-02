@@ -7,6 +7,6 @@ Design e sviluppo: Matteo Marino
 Instagram: https://www.instagram.com/_matteomarino/
 
 /* SITE */
-Ultimo aggiornamento: 2026-10-29
+Ultimo aggiornamento: 2026-11-02
 Lingua: Italiano
 Standard: HTML5, CSS3, JavaScript
